@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Hero = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <section className="flex flex-col items-center text-black relative font-[Poppins] px-4 sm:px-6">
+    <section className=" lg:h-[45vw] xl:h-[45vw] h-[50vh] sm:h-[590px] md:h-[876px] mb-2 flex flex-col items-center text-black relative font-[Poppins] px-4 sm:px-6">
       {/* Background SVG */}
       <svg
-        className="absolute -z-10 w-full h-[600px] md:h-[676px] top-0 object-cover"
+        className="absolute -z-10 top-0 left-0 w-full lg:h-[45vw] xl:h-[45vw] h-[50vh] sm:h-[590px] md:h-[876px] object-cover"
         viewBox="0 0 1440 676"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
+        preserveAspectRatio="xMidYMid slice"
       >
         <rect
           x="-92"
@@ -58,12 +58,16 @@ const Hero = () => {
         </div>
 
         <div className="hidden md:flex gap-3">
+          <Link to='/signup'>
           <button className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-md text-sm">
             Sign Up
           </button>
-          <button className="hover:bg-slate-200 transition px-5 py-2 border border-slate-400 rounded-md text-sm">
-            Login
-          </button>
+          </Link>
+          <Link to="/login">
+            <button className="hover:bg-slate-200 transition px-5 py-2 border border-slate-400 rounded-md text-sm">
+              Login
+            </button>
+          </Link>
         </div>
 
         <button
@@ -89,6 +93,7 @@ const Hero = () => {
       </nav>
 
       {/* Mobile Nav */}
+      {/* Mobile Nav */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur flex flex-col items-center justify-center gap-6 text-lg text-white">
           <a href="#products" onClick={() => setMenuOpen(false)}>
@@ -103,6 +108,20 @@ const Hero = () => {
           <a href="#pricing" onClick={() => setMenuOpen(false)}>
             Pricing
           </a>
+
+          {/* Mobile Sign Up & Login Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-4">
+            <Link to="/signup">
+              <button className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md w-40">
+                Sign Up
+              </button>
+            </Link>
+            <Link to="/login">
+              <button className="px-6 py-2 border border-slate-400 rounded-md w-40 text-white hover:bg-slate-200 transition">
+                Login
+              </button>
+            </Link>
+          </div>
 
           <button
             onClick={() => setMenuOpen(false)}
