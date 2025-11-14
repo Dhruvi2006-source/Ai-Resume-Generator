@@ -43,9 +43,9 @@ const Hero = () => {
         </a>
 
         <div className="hidden md:flex items-center gap-8 text-sm lg:text-base">
-          <a href="#products" className="hover:text-indigo-600 transition">
-            Products
-          </a>
+          <Link to='/layout' className="hover:text-indigo-600 transition">
+            Dashboard
+          </Link>
           <a href="#resources" className="hover:text-indigo-600 transition">
             Resources
           </a>
@@ -93,12 +93,11 @@ const Hero = () => {
       </nav>
 
       {/* Mobile Nav */}
-      {/* Mobile Nav */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur flex flex-col items-center justify-center gap-6 text-lg text-white">
-          <a href="#products" onClick={() => setMenuOpen(false)}>
-            Products
-          </a>
+          <Link to="/layout" onClick={() => setMenuOpen(false)}>
+            Dashboard
+          </Link>
           <a href="#resources" onClick={() => setMenuOpen(false)}>
             Resources
           </a>
@@ -149,7 +148,9 @@ const Hero = () => {
 
         <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center w-fit">
           <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-6 sm:px-8 py-2.5 sm:h-11 w-full sm:w-auto active:scale-95 transition">
+            <Link to ='/layout'>
             Get Started
+            </Link>
             <svg
               width="18"
               height="18"
