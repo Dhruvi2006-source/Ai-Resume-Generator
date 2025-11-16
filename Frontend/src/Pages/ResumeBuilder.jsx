@@ -40,9 +40,12 @@ const ResumeBuilder = () => {
     }
   };
 
-  useEffect(() => {
-    loadExistingResume();
-  }, []);
+useEffect(() => {
+  const fetchData = async () => {
+    await loadExistingResume();
+  };
+  fetchData();
+}, []);
 
   const [aciveSectionIndex, setActiveSectionIndex] = useState(0);
   const [removeBackground, setReoveBackground] = useState(false);
@@ -120,9 +123,17 @@ const ResumeBuilder = () => {
               {/* Form Content */}
               <div className="space-y-6">
                 {activeSections.id === "personal" && (
-                  <div>
-                    
-                  </div>
+                  <PersonalInfo
+                    data={resumeData.personal_Info}
+                    onChange={(updatedData) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        personal_Info: updatedData,
+                      }))
+                    }
+                    removeBackground={removeBackground}
+                    setRemoveBackground={setReoveBackground}
+                  />
                 )}
               </div>
             </div>
