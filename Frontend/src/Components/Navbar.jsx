@@ -3,25 +3,29 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const user ={name: 'Dhruvi'};
+  const user = { name: "Dhruvi" };
   return (
     <nav className="h-[70px] relative w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center justify-between z-30 bg-linear-to-r from-indigo-400 to-violet-500 transition-all">
-      {/* LEFT — LOGO (Always visible) */}
-      <a href="/" className="text-white text-2xl sm:text-3xl font-bold">
-        ResuForge
-      </a>
+      <div className=" flex gap-20 justify-between">
+        {/* LEFT — LOGO (Always visible) */}
+        <a href="/" className="text-white text-2xl sm:text-3xl font-bold">
+          ResuForge
+        </a>
 
-      {/* DESKTOP NAV */}
-      <div className="text-white md:flex hidden items-center gap-10">
-        <Link to="/" className="hover:text-white/70 transition">
-          Home
-        </Link>
+        {/* DESKTOP NAV */}
+        <div className="text-white md:flex hidden items-center text-xl">
+          <Link to="/" className="hover:text-white/70 transition">
+            Home
+          </Link>
+        </div>
       </div>
 
       {/* RIGHT — USERNAME + LOGOUT (Desktop Only) */}
       <div className="flex items-center gap-6 text-white">
         {/* Username hidden on mobile */}
-        <div className="username font-medium hidden md:block">Hii, {user?.name}</div>
+        <div className="username font-medium hidden md:block">
+          Hii, {user?.name}
+        </div>
 
         <Link to="/">
           <button className="bg-white text-gray-700 md:inline hidden text-sm hover:opacity-90 active:scale-95 transition-all w-40 h-11 rounded-full">
@@ -62,7 +66,9 @@ const Navbar = () => {
         "
         >
           {/* USERNAME inside menu */}
-          <div className="text-gray-950 text-lg font-medium mb-4">Hii, Dhruvi</div>
+          <div className="text-gray-950 text-lg font-medium mb-4">
+            Hii, Dhruvi
+          </div>
 
           {/* Links */}
           <div className="flex flex-col space-y-4 text-gray-950 text-lg">

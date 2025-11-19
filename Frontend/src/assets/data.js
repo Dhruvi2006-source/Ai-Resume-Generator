@@ -1,8 +1,5 @@
 export const dummyData = [
   {
-    // ---------------------------------------------------------
-    // Resume 1
-    // ---------------------------------------------------------
     _id: "68d2a31a1c44dd38875bb037e",
     userId: "68c180acdf1775dfd02c6d87",
 
@@ -10,14 +7,15 @@ export const dummyData = [
     createdAt: "2025-01-10T08:25:00.000Z",
     updatedAt: "2025-02-14T12:40:20.000Z",
 
+    // ✅ Fields match form requirements
     personal_info: {
-      full_name: "Alex Smith",
-      email: "alex@example.com",
-      phone: "0123456789",
-      location: "NY, USA",
-      linkedin: "https://www.linkedin.com",
-      website: "https://www.example.com",
-      profession: "Full Stack Developer",
+      fullName: "Alex Smith",
+      Email: "alex@example.com",
+      Phone: "0123456789",
+      Address: "NY, USA",
+      LinkedIn: "https://www.linkedin.com",
+      Website: "https://www.example.com",
+      Profession: "Full Stack Developer",
     },
 
     summary:
@@ -67,11 +65,11 @@ export const dummyData = [
     ]
   },
 
-  {
-    // ---------------------------------------------------------
-    // Resume 2
-    // ---------------------------------------------------------
+  // -------------------------------------------------------------
+  // Resume 2
+  // -------------------------------------------------------------
 
+  {
     _id: "78e3b51a2cd4ff56792bb437f",
     userId: "78c190bcaa17f5efc02c6f55",
 
@@ -80,13 +78,13 @@ export const dummyData = [
     updatedAt: "2025-02-10T15:05:00.000Z",
 
     personal_info: {
-      full_name: "Sarah Johnson",
-      email: "sarah@example.com",
-      phone: "+1 9876543210",
-      location: "California, USA",
-      linkedin: "https://linkedin.com/in/sarah",
-      website: "https://sarah.dev",
-      profession: "Frontend Developer"
+      fullName: "Sarah Johnson",
+      Email: "sarah@example.com",
+      Phone: "+1 9876543210",
+      Address: "California, USA",
+      LinkedIn: "https://linkedin.com/in/sarah",
+      Website: "https://sarah.dev",
+      Profession: "Frontend Developer"
     },
 
     summary:
@@ -135,11 +133,11 @@ export const dummyData = [
     ]
   },
 
-  {
-    // ---------------------------------------------------------
-    // Resume 3 (Added)
-    // ---------------------------------------------------------
+  // -------------------------------------------------------------
+  // Resume 3
+  // -------------------------------------------------------------
 
+  {
     _id: "99f4d61b1aa2cc99887ab332",
     userId: "78c190bcaa17f5efc02c6f55",
 
@@ -148,13 +146,13 @@ export const dummyData = [
     updatedAt: "2025-02-05T13:30:00.000Z",
 
     personal_info: {
-      full_name: "Michael Brown",
-      email: "michael@example.com",
-      phone: "+1 5432109876",
-      location: "Texas, USA",
-      linkedin: "https://linkedin.com/in/michael",
-      website: "https://michael.dev",
-      profession: "Backend Developer"
+      fullName: "Michael Brown",
+      Email: "michael@example.com",
+      Phone: "+1 5432109876",
+      Address: "Texas, USA",
+      LinkedIn: "https://linkedin.com/in/michael",
+      Website: "https://michael.dev",
+      Profession: "Backend Developer"
     },
 
     summary:

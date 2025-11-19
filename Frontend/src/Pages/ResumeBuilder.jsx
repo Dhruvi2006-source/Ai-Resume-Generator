@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { dummyData } from "../assets/data";
+import { dummyData } from "../assets/data.js";
 import {
   ArrowLeftIcon,
   Briefcase,
@@ -16,13 +16,20 @@ import {
 import PersonalInfo from "../Components/PersonalInfo";
 
 const ResumeBuilder = () => {
-  const { resumeId } = useParams();
+  const { resumeid } = useParams();
+
+  console.log("Params:", resumeid);
+  console.log(
+    "Dummy Match:",
+    dummyData.find((r) => r._id === resumeid)
+  );
+
 
   const [resumeData, setResumeData] = useState({
     _id: "",
     title: "",
-    personal_Info: {},
-    personal_summary: "",
+    personal_info: {},
+    summary: "",
     experience: [],
     education: [],
     projects: [],
@@ -32,35 +39,36 @@ const ResumeBuilder = () => {
     public: "false",
   });
 
-  const loadExistingResume = async () => {
-    const resume = dummyData.find((resume) => resume._id === resumeId);
-    if (resume) {
-      setResumeData(resume);
-      document.title = resume.title;
-    }
-  };
+
 
 useEffect(() => {
-  const fetchData = async () => {
-    await loadExistingResume();
-  };
-  fetchData();
-}, []);
+  const resume = dummyData.find((r) => r._id === resumeid);
 
-  const [aciveSectionIndex, setActiveSectionIndex] = useState(0);
-  const [removeBackground, setReoveBackground] = useState(false);
+  console.log("Matched Resume:", resume);
+
+  if (resume) {
+    document.title = resume.title;
+    const timer = setTimeout(() => {
+      setResumeData(resume);
+    }, 0);
+    return () => clearTimeout(timer);
+  }
+}, [resumeid]);
+
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [removeBackground, setRemoveBackground] = useState(false);
 
   const section = [
     { id: "personal", name: "personal_info", icon: User },
-    { id: "summary", name: "personal_summary", icon: FileText },
+    { id: "summary", name: "summary", icon: FileText },
     { id: "experience", name: "experience", icon: Briefcase },
     { id: "education", name: "education", icon: GraduationCap },
     { id: "projects", name: "projects", icon: FolderIcon },
-    { id: "skills", name: "skils", icon: Sparkles },
+    { id: "skills", name: "skills", icon: Sparkles },
     { id: "Tools", name: "tools", icon: Wrench },
   ];
 
-  const activeSections = section[aciveSectionIndex];
+  const activeSection = section[activeSectionIndex];
 
   return (
     <div>
@@ -83,7 +91,9 @@ useEffect(() => {
               <hr
                 className="absolute top-0 left-0 h-1 bg-linear-to-r from-indigo-400 to-indigo-700 border-none transition-all duration-2000"
                 style={{
-                  width: `${(aciveSectionIndex * 100) / (section.length - 1)}%`,
+                  width: `${
+                    (activeSectionIndex * 100) / (section.length - 1)
+                  }%`,
                 }}
               />
 
@@ -91,7 +101,7 @@ useEffect(() => {
               <div className="flex justify-between items-center mb-6 border-b border-gray-500 py-1"></div>
               <div></div>
               <div className="flex items-center justify-between">
-                {aciveSectionIndex !== 0 && (
+                {activeSectionIndex !== 0 && (
                   <button
                     onClick={() => {
                       setActiveSectionIndex((prevIndex) =>
@@ -99,7 +109,7 @@ useEffect(() => {
                       );
                     }}
                     className="flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all"
-                    disabled={aciveSectionIndex === 0}
+                    disabled={activeSectionIndex === 0}
                   >
                     <ChevronLeft className="size-4" /> Previous
                   </button>
@@ -112,9 +122,9 @@ useEffect(() => {
                     );
                   }}
                   className={`flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all ${
-                    aciveSectionIndex === section.length - 1 && "opacity-50"
+                    activeSectionIndex === section.length - 1 && "opacity-50"
                   }`}
-                  disabled={aciveSectionIndex === section.length - 1}
+                  disabled={activeSectionIndex === section.length - 1}
                 >
                   Next <ChevronRight className="size-4" />
                 </button>
@@ -122,17 +132,20 @@ useEffect(() => {
 
               {/* Form Content */}
               <div className="space-y-6">
-                {activeSections.id === "personal" && (
+                {activeSection.id === "personal" && (
                   <PersonalInfo
-                    data={resumeData.personal_Info}
+                    data={resumeData.personal_info || {}}
                     onChange={(updatedData) =>
                       setResumeData((prev) => ({
                         ...prev,
-                        personal_Info: updatedData,
+                        personal_info: {
+                          ...prev.personal_info,
+                          ...updatedData,
+                        },
                       }))
                     }
                     removeBackground={removeBackground}
-                    setRemoveBackground={setReoveBackground}
+                    setRemoveBackground={setRemoveBackground}
                   />
                 )}
               </div>
@@ -140,6 +153,7 @@ useEffect(() => {
           </div>
           {/* Right-side -Preview */}
           <div></div>
+         
         </div>
       </div>
     </div>
