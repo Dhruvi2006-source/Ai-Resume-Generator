@@ -370,6 +370,213 @@
 // export default PersonalInfo;
 
 
+// import React from "react";
+// import {
+//   Briefcase,
+//   LinkedinIcon,
+//   Globe,
+//   MapPin,
+//   Phone,
+//   User,
+//   Mail,
+//   UploadCloud,
+// } from "lucide-react";
+// import { motion } from "framer-motion";
+
+// const PersonalInfo = ({
+//   data,
+//   onChange,
+//   removeBackground,
+//   setRemoveBackground,
+// }) => {
+//   const handleChange = (field, value) => {
+//     onChange({ [field]: value });
+//   };
+
+//   const field = [
+//     {
+//       key: "fullName",
+//       label: "Name",
+//       type: "text",
+//       icon: User,
+//       required: true,
+//     },
+//     { key: "Email", label: "Email", type: "email", icon: Mail, required: true },
+//     {
+//       key: "Phone",
+//       label: "Number",
+//       type: "phone",
+//       icon: Phone,
+//       required: false,
+//     },
+//     {
+//       key: "Address",
+//       label: "Address",
+//       type: "text",
+//       icon: MapPin,
+//       required: false,
+//     },
+//     {
+//       key: "Profession",
+//       label: "Profession",
+//       type: "text",
+//       icon: Briefcase,
+//       required: false,
+//     },
+//     {
+//       key: "LinkedIn",
+//       label: "LinkedIn Profile",
+//       type: "url",
+//       icon: LinkedinIcon,
+//       required: false,
+//     },
+//     {
+//       key: "Website",
+//       label: "Website",
+//       type: "url",
+//       icon: Globe,
+//       required: false,
+//     },
+//   ];
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 10 }}
+//       animate={{ opacity: 1, y: 0 }}
+//       transition={{ duration: 0.3 }}
+//       className="p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm bg-white"
+//     >
+//       <motion.div
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         transition={{ delay: 0.05 }}
+//       >
+//         <h2 className="text-xl font-semibold text-gray-900">
+//           Personal Information
+//         </h2>
+//         <p className="text-sm text-gray-600 mt-1">Fill your personal details</p>
+//       </motion.div>
+
+//       {/* IMAGE + TOGGLE */}
+//       <div className="flex items-center gap-4 mt-5">
+//         <label className="cursor-pointer flex items-center gap-3">
+//           {data.image ? (
+//             <motion.img
+//               src={
+//                 typeof data.image === "string"
+//                   ? data.image
+//                   : URL.createObjectURL(data.image)
+//               }
+//               alt="Profile"
+//               initial={{ scale: 0.85, opacity: 0 }}
+//               animate={{ scale: 1, opacity: 1 }}
+//               transition={{ type: "spring", stiffness: 180, damping: 12 }}
+//               className="w-16 h-16 rounded-full object-cover border-2 border-gray-300 shadow-sm hover:scale-105 transition"
+//             />
+//           ) : (
+//             <motion.div
+//               whileHover={{ scale: 1.05 }}
+//               className="w-16 h-16 rounded-full border-2 border-dashed border-gray-300 flex flex-col justify-center items-center bg-gray-50"
+//             >
+//               <UploadCloud className="size-6 text-gray-600" />
+//               <p className="text-xs mt-1">Upload</p>
+//             </motion.div>
+//           )}
+
+//           <input
+//             type="file"
+//             accept="image/*"
+//             className="hidden"
+//             onChange={(e) => handleChange("image", e.target.files[0])}
+//           />
+//         </label>
+
+//         {data.image && (
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             className="flex flex-col gap-1 text-sm pt-2"
+//           >
+//             <p className="font-medium text-gray-800">Remove Background</p>
+
+//             <label className="relative inline-flex items-center cursor-pointer">
+//               <input
+//                 type="checkbox"
+//                 className="sr-only peer"
+//                 checked={removeBackground}
+//                 onChange={() => setRemoveBackground((prev) => !prev)}
+//               />
+//               <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-600 transition-all"></div>
+//               <span
+//                 className="
+//                   absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow
+//                   transition-all duration-300 peer-checked:translate-x-5
+//                 "
+//               ></span>
+//             </label>
+//           </motion.div>
+//         )}
+//       </div>
+
+//       {/* INPUT FIELDS */}
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+//         {field.map((fields, index) => {
+//           const Icon = fields.icon;
+
+//           return (
+//             <motion.div
+//               key={fields.key}
+//               initial={{ opacity: 0, y: 8 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ delay: index * 0.05 }}
+//               className="flex flex-col gap-1"
+//             >
+//               <label className="text-sm font-medium text-gray-700 flex items-center gap-1">
+//                 <Icon className="size-4 text-gray-700" />
+//                 {fields.label}
+//                 {fields.required && <span className="text-red-500">*</span>}
+//               </label>
+
+//               <motion.input
+//                 whileFocus={{
+//                   scale: 1.02,
+//                   borderColor: "#1e3a8a",
+//                   boxShadow: "0 0 0 2px rgba(30,58,138,0.3)",
+//                 }}
+//                 transition={{ duration: 0.15 }}
+//                 type={fields.type}
+//                 value={data[fields.key] || ""}
+//                 onChange={(e) => handleChange(fields.key, e.target.value)}
+//                 className="mt-1 w-full px-3 py-2 border border-gray-400 rounded-lg outline-none transition-all text-sm bg-white"
+//                 placeholder={`Enter your ${fields.label.toLowerCase()}`}
+//                 required={fields.required}
+//               />
+//             </motion.div>
+//           );
+//         })}
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// export default PersonalInfo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
 import {
   Briefcase,
@@ -393,7 +600,7 @@ const PersonalInfo = ({
     onChange({ [field]: value });
   };
 
-  const field = [
+  const fields = [
     {
       key: "fullName",
       label: "Name",
@@ -443,42 +650,35 @@ const PersonalInfo = ({
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm bg-white"
+      transition={{ duration: 0.25 }}
+      className="p-6 rounded-xl border border-gray-300 shadow-md bg-white"
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.05 }}
-      >
-        <h2 className="text-xl font-semibold text-gray-900">
-          Personal Information
-        </h2>
-        <p className="text-sm text-gray-600 mt-1">Fill your personal details</p>
-      </motion.div>
+      <h2 className="text-xl font-semibold text-gray-900">
+        Personal Information
+      </h2>
+      <p className="text-sm text-gray-600 mt-1">Fill your personal details</p>
 
-      {/* IMAGE + TOGGLE */}
+      {/* Image Upload */}
       <div className="flex items-center gap-4 mt-5">
         <label className="cursor-pointer flex items-center gap-3">
-          {data.image ? (
+          {data.profileImage ? (
             <motion.img
               src={
-                typeof data.image === "string"
-                  ? data.image
-                  : URL.createObjectURL(data.image)
+                typeof data.profileImage === "string"
+                  ? data.profileImage
+                  : URL.createObjectURL(data.profileImage)
               }
               alt="Profile"
               initial={{ scale: 0.85, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", stiffness: 180, damping: 12 }}
-              className="w-16 h-16 rounded-full object-cover border-2 border-gray-300 shadow-sm hover:scale-105 transition"
+              className="w-16 h-16 rounded-full object-cover border border-gray-400 shadow hover:scale-105 transition"
             />
           ) : (
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="w-16 h-16 rounded-full border-2 border-dashed border-gray-300 flex flex-col justify-center items-center bg-gray-50"
+              className="w-16 h-16 rounded-full border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-100"
             >
-              <UploadCloud className="size-6 text-gray-600" />
+              <UploadCloud className="size-6 text-gray-700" />
               <p className="text-xs mt-1">Upload</p>
             </motion.div>
           )}
@@ -487,16 +687,13 @@ const PersonalInfo = ({
             type="file"
             accept="image/*"
             className="hidden"
-            onChange={(e) => handleChange("image", e.target.files[0])}
+            onChange={(e) => onChange({ profileImage: e.target.files[0] })}
           />
         </label>
 
-        {data.image && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex flex-col gap-1 text-sm pt-2"
-          >
+        {/* Toggle should show ONLY when image exists */}
+        {data.profileImage && (
+          <div className="flex flex-col gap-1 text-sm pt-2">
             <p className="font-medium text-gray-800">Remove Background</p>
 
             <label className="relative inline-flex items-center cursor-pointer">
@@ -506,50 +703,38 @@ const PersonalInfo = ({
                 checked={removeBackground}
                 onChange={() => setRemoveBackground((prev) => !prev)}
               />
-              <div className="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-600 transition-all"></div>
-              <span
-                className="
-                  absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow
-                  transition-all duration-300 peer-checked:translate-x-5
-                "
-              ></span>
+              <div className="w-11 h-6 bg-gray-400 rounded-full peer-checked:bg-blue-600 transition-all"></div>
+              <span className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-all peer-checked:translate-x-5"></span>
             </label>
-          </motion.div>
+          </div>
         )}
       </div>
 
-      {/* INPUT FIELDS */}
+      {/* Input Fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-        {field.map((fields, index) => {
-          const Icon = fields.icon;
+        {fields.map((f, i) => {
+          const Icon = f.icon;
 
           return (
             <motion.div
-              key={fields.key}
+              key={f.key}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: i * 0.05 }}
               className="flex flex-col gap-1"
             >
-              <label className="text-sm font-medium text-gray-700 flex items-center gap-1">
+              <label className="text-sm font-medium text-gray-800 flex items-center gap-1">
                 <Icon className="size-4 text-gray-700" />
-                {fields.label}
-                {fields.required && <span className="text-red-500">*</span>}
+                {f.label}
+                {f.required && <span className="text-red-500">*</span>}
               </label>
 
-              <motion.input
-                whileFocus={{
-                  scale: 1.02,
-                  borderColor: "#1e3a8a",
-                  boxShadow: "0 0 0 2px rgba(30,58,138,0.3)",
-                }}
-                transition={{ duration: 0.15 }}
-                type={fields.type}
-                value={data[fields.key] || ""}
-                onChange={(e) => handleChange(fields.key, e.target.value)}
-                className="mt-1 w-full px-3 py-2 border border-gray-400 rounded-lg outline-none transition-all text-sm bg-white"
-                placeholder={`Enter your ${fields.label.toLowerCase()}`}
-                required={fields.required}
+              <input
+                type={f.type}
+                value={data[f.key] || ""}
+                onChange={(e) => handleChange(f.key, e.target.value)}
+                placeholder={`Enter your ${f.label.toLowerCase()}`}
+                className="px-3 py-2 border border-gray-400 rounded-lg text-sm bg-white outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all"
               />
             </motion.div>
           );

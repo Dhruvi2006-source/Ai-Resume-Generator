@@ -16,6 +16,7 @@ export const dummyData = [
       LinkedIn: "https://www.linkedin.com",
       Website: "https://www.example.com",
       Profession: "Full Stack Developer",
+      profileImage: "https://i.pinimg.com/originals/03/d8/db/03d8db5fa74516252ade0c0bc77aeb9e.jpg", 
     },
 
     summary:
@@ -84,7 +85,8 @@ export const dummyData = [
       Address: "California, USA",
       LinkedIn: "https://linkedin.com/in/sarah",
       Website: "https://sarah.dev",
-      Profession: "Frontend Developer"
+      Profession: "Frontend Developer",
+      profileImage: "https://i.pinimg.com/474x/9c/bd/74/9cbd744294b488939adc6b861898117a.jpg",
     },
 
     summary:
@@ -146,6 +148,7 @@ export const dummyData = [
     updatedAt: "2025-02-05T13:30:00.000Z",
 
     personal_info: {
+      profileImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcz6oIHwco4Fh2psWoxBeiMpxTz3buogZgsw&s" ,
       fullName: "Michael Brown",
       Email: "michael@example.com",
       Phone: "+1 5432109876",

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+
 import { dummyData } from "../assets/data.js";
 import {
   ArrowLeftIcon,
@@ -9,11 +10,15 @@ import {
   FileText,
   FolderIcon,
   GraduationCap,
+  Import,
   Sparkles,
   User,
   Wrench,
 } from "lucide-react";
 import PersonalInfo from "../Components/PersonalInfo";
+import Template1 from "../Template/Template1.jsx";
+import Template2 from "../Template/Template2.jsx";
+import Template3 from "../Template/Template3.jsx";
 
 const ResumeBuilder = () => {
   const { resumeid } = useParams();
@@ -152,8 +157,11 @@ useEffect(() => {
             </div>
           </div>
           {/* Right-side -Preview */}
-          <div></div>
-         
+          <div className="lg:col-span-7 p-6">
+                {/* <Template1 data={resumeData} /> */}
+                <Template2 data={resumeData} />
+                {/* <Template3 data={resumeData}/>  */}
+          </div>
         </div>
       </div>
     </div>
