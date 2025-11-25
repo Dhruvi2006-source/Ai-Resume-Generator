@@ -35,7 +35,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
         variant="outline"
         className="w-full flex items-center gap-1 justify-between"
       >
-        <Layout size={14} /> <span className="max-sm:hidden">Template</span>
+        <Layout className="sm:size-6" /> <span className="max-sm:hidden">Template</span>
       </button>
 
       {isOpen && (

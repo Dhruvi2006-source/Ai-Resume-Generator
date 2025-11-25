@@ -22,7 +22,6 @@ import Template3 from "../Template/Template3.jsx";
 import Template4 from "../Template/Template4.jsx";
 import Preview from "./Preview.jsx";
 import TemplateSelector from "../Components/TemplateSelector.jsx";
-
 const ResumeBuilder = () => {
   const { resumeid } = useParams();
 
@@ -169,12 +168,10 @@ const ResumeBuilder = () => {
             {/* Buttons */}
             <div className=""></div>
             {/* Resume-Preview */}
-            <div className="">
-              <Preview
-                data={resumeData}
-                template={resumeData.template}
-                colours={resumeData.accent_color}
-              />
+            <div className="lg:col-span-7 px-2 sm:px-4 lg:p-6 w-full">
+              <div className="w-full max-w-full overflow-hidden">
+                <Preview data={resumeData} template={resumeData.template} />
+              </div>
             </div>
           </div>
         </div>

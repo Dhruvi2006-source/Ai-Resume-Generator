@@ -1,23 +1,33 @@
 import React from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Globe,
+  Briefcase,
+  GraduationCap,
+  Laptop,
+  UserRound,
+} from "lucide-react";
 
 const Template2 = ({ data }) => {
   return (
-    <div
-      className="w-full max-w-5xl mx-auto  
-      bg-white shadow-2xl rounded-2xl
-      border border-gray-200
-      relative overflow-hidden"
-    >
+    <div className="w-full max-w-[950px] mx-auto bg-white   relative overflow-hidden">
       {/* GRID BACKGROUND */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.07] 
-      bg-[linear-gradient(to_right,#0001_1px,transparent_1px),linear-gradient(to_bottom,#0001_1px,transparent_1px)]
-      bg-size-[22px_22px]"
+        className="absolute inset-0 pointer-events-none opacity-[0.04]
+        bg-[linear-gradient(to_right,#0002_1px,transparent_1px),linear-gradient(to_bottom,#0002_1px,transparent_1px)]
+        bg-size-[26px_26px]"
       ></div>
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-9 gap-10">
+      {/* MAIN GRID (Mobile 2 Columns) */}
+      <div
+        className="relative z-10 grid grid-cols-9
+ p-4 sm:p-6 lg:p-0"
+      >
         {/* LEFT SIDEBAR */}
-        <div className="lg:col-span-4 p-10 space-y-10 bg-violet-600 border-r border-gray-300">
+        <div className="col-span-4 h-[297mm] bg-linear-to-b from-violet-700 to-violet-500 text-white rounded-r-xl p-5 sm:p-7 lg:p-10 space-y-8">
           {/* PROFILE */}
           <div className="text-center">
             {data.personal_info.profileImage && (
@@ -28,41 +38,54 @@ const Template2 = ({ data }) => {
                     : URL.createObjectURL(data.personal_info.profileImage)
                 }
                 alt="Profile"
-                className="w-32 h-32 mx-auto rounded-full object-cover shadow-md border"
+                className="w-24 h-24 sm:w-32 sm:h-32 mx-auto roundemin-h-max object-cover shadow-xl border-4 border-white/30"
               />
             )}
 
-            <h1 className="text-2xl font-bold mt-4 text-red-50 tracking-tight">
+            <h1 className="text-xl sm:text-3xl font-bold mt-3">
               {data.personal_info.fullName}
             </h1>
-            <p className="text-amber-100 text-sm mt-1 uppercase tracking-wide">
+            <p className="text-violet-100 text-xs sm:text-sm mt-1 uppercase tracking-wide">
               {data.personal_info.Profession}
             </p>
           </div>
 
           {/* CONTACT */}
-          <div>
-            <h2 className="text-lg font-semibold text-pink-100 border-b pb-2">
-              Contact
+          <div className="space-y-3">
+            <h2 className="text-lg font-semibold flex items-center gap-2">
+              <UserRound size={18} /> Contact
             </h2>
-            <div className="space-y-1 mt-3 text-gray-50 text-sm">
-              <p>{data.personal_info.Email}</p>
-              <p>{data.personal_info.Phone}</p>
-              <p>{data.personal_info.Address}</p>
+
+            <div className="text-xs sm:text-sm space-y-2 break-all">
+              <p className="flex items-center gap-2">
+                <Mail size={14} /> {data.personal_info.Email}
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone size={14} /> {data.personal_info.Phone}
+              </p>
+              <p className="flex items-center gap-2">
+                <MapPin size={14} /> {data.personal_info.Address}
+              </p>
+              <p className="flex items-center gap-2">
+                <Linkedin size={14} /> {data.personal_info.LinkedIn}
+              </p>
+              <p className="flex items-center gap-2">
+                <Globe size={14} /> {data.personal_info.Website}
+              </p>
             </div>
           </div>
 
           {/* SKILLS */}
           <div>
-            <h2 className="text-lg font-semibold text-blue-50 border-b pb-2">
-              Skills
+            <h2 className="text-lg font-semibold flex items-center gap-2">
+              <Laptop size={18} /> Skills
             </h2>
 
             <div className="mt-3 flex flex-wrap gap-2">
               {data.skills?.map((skill, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 text-xs bg-white border rounded-lg shadow-sm"
+                  className="px-3 py-1 text-xs sm:text-sm bg-white/20 border border-white/30 backdrop-blur rounded-md shadow"
                 >
                   {skill.name}
                 </span>
@@ -71,35 +94,40 @@ const Template2 = ({ data }) => {
           </div>
         </div>
 
-        {/* RIGHT MAIN CONTENT */}
-        <div className="lg:col-span-5 pt-10 pb-10 space-y-12 pr-3">
+        {/* RIGHT SIDE */}
+        <div className="col-span-5 lg:col-span-5 p-3 sm:p-6 lg:p-10 space-y-10">
           {/* SUMMARY */}
           <div>
-            <h2 className="text-xl font-semibold border-l-4 border-blue-600 pl-4">
-              Professional Summary
+            <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+              <UserRound size={18} /> Professional Summary
             </h2>
-            <p className="mt-4 text-gray-700 leading-relaxed bg-white p-5  shadow-sm">
+            <p className="mt-3 text-gray-700 leading-relaxed bg-gray-50 p-4 sm:p-5 rounded-xl shadow-sm text-sm sm:text-base">
               {data.summary}
             </p>
           </div>
 
-          {/* EXPERIENCE — Reverse Chronological */}
+          {/* EXPERIENCE */}
           <div>
-            <h2 className="text-xl font-semibold border-l-4 border-purple-600 pl-4">
-              Work Experience
+            <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+              <Briefcase size={18} /> Work Experience
             </h2>
 
-            <div className="mt-6 space-y-6">
+            <div className="mt-4 space-y-6">
               {data.experience
                 ?.slice()
-                .reverse() // NEWEST FIRST
+                .reverse()
                 .map((exp, i) => (
-                  <div key={i} className=" p-6 shadow-sm bg-white">
-                    <h3 className="text-lg font-semibold">{exp.position}</h3>
-                    <p className="text-gray-600 text-sm mt-1">
+                  <div
+                    key={i}
+                    className="p-4 sm:p-6 bg-gray-50 rounded-xl shadow-sm"
+                  >
+                    <h3 className="text-base sm:text-lg font-semibold">
+                      {exp.position}
+                    </h3>
+                    <p className="text-gray-600 text-xs sm:text-sm mt-1">
                       {exp.company} • {exp.startDate} - {exp.endDate}
                     </p>
-                    <p className="text-gray-800 mt-3 leading-relaxed">
+                    <p className="text-gray-800 mt-2 sm:mt-3 text-xs sm:text-base leading-relaxed">
                       {exp.details}
                     </p>
                   </div>
@@ -109,38 +137,50 @@ const Template2 = ({ data }) => {
 
           {/* PROJECTS */}
           <div>
-            <h2 className="text-xl font-semibold border-l-4 border-pink-600 pl-4">
-              Projects
+            <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+              <Laptop size={18} /> Projects
             </h2>
 
-            <div className="mt-6 space-y-6">
+            <div className="mt-4 space-y-6">
               {data.projects?.map((project, i) => (
-                <div key={i} className="p-6 shadow-sm bg-white">
-                  <h3 className="text-lg font-semibold">{project.title}</h3>
-                  <p className="text-sm text-gray-600 mt-1">{project.link}</p>
-                  <p className="mt-2 text-gray-800">{project.description}</p>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Tech Used: {project.tech}
+                <div
+                  key={i}
+                  className="p-4 sm:p-6 bg-gray-50 rounded-xl shadow-sm"
+                >
+                  <h3 className="text-base sm:text-lg font-semibold">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-purple-600 mt-1 break-all">
+                    {project.link}
+                  </p>
+                  <p className="mt-2 text-gray-800 text-xs sm:text-base">
+                    {project.description}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                    Tech Used:{" "}
+                    <span className="font-semibold">{project.tech}</span>
                   </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* EDUCATION — Reverse Chronological */}
+          {/* EDUCATION */}
           <div>
-            <h2 className="text-xl font-semibold border-l-4 border-yellow-600 pl-4">
-              Education
+            <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+              <GraduationCap size={18} /> Education
             </h2>
 
-            <div className="mt-6 space-y-4">
+            <div className="mt-4 space-y-4">
               {data.education
                 ?.slice()
-                .reverse() // newest → oldest
+                .reverse()
                 .map((edu, i) => (
-                  <div key={i}>
-                    <h3 className="text-lg font-semibold">{edu.degree}</h3>
-                    <p className="text-gray-700">
+                  <div key={i} className="p-2">
+                    <h3 className="text-base sm:text-lg font-semibold">
+                      {edu.degree}
+                    </h3>
+                    <p className="text-gray-700 text-xs sm:text-base">
                       {edu.institution} • {edu.startDate} - {edu.endDate}
                     </p>
                   </div>

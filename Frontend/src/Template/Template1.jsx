@@ -1,8 +1,8 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
 
 const Template1 = ({ data }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white shadow-xl rounded-xl overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto bg-white  overflow-hidden">
       {/* -------- HEADER -------- */}
       <div className="flex items-center gap-8 p-8 bg-linear-to-r from-gray-900 to-gray-700 text-white">
         {/* LEFT: PROFILE IMAGE */}
@@ -42,6 +42,12 @@ const Template1 = ({ data }) => {
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={16} /> <span>{data.personal_info.Address}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Linkedin size={16} /> <span>{data.personal_info.LinkedIn}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Globe size={16} /> <span>{data.personal_info.Website}</span>
             </div>
           </div>
         </div>
