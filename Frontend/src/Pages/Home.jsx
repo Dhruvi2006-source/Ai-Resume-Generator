@@ -9,7 +9,9 @@ const Home = () => {
   return (
     <div>
       <Banner />
+      <div className="mt-0 lg:mb-50 sm:mb-15 mb-10">
       <Hero />
+      </div>
       <Features />
       <Testimonial />
       <Footer />

@@ -19,6 +19,9 @@ import PersonalInfo from "../Components/PersonalInfo";
 import Template1 from "../Template/Template1.jsx";
 import Template2 from "../Template/Template2.jsx";
 import Template3 from "../Template/Template3.jsx";
+import Template4 from "../Template/Template4.jsx";
+import Preview from "./Preview.jsx";
+import TemplateSelector from "../Components/TemplateSelector.jsx";
 
 const ResumeBuilder = () => {
   const { resumeid } = useParams();
@@ -28,7 +31,6 @@ const ResumeBuilder = () => {
     "Dummy Match:",
     dummyData.find((r) => r._id === resumeid)
   );
-
 
   const [resumeData, setResumeData] = useState({
     _id: "",
@@ -44,21 +46,19 @@ const ResumeBuilder = () => {
     public: "false",
   });
 
+  useEffect(() => {
+    const resume = dummyData.find((r) => r._id === resumeid);
 
+    console.log("Matched Resume:", resume);
 
-useEffect(() => {
-  const resume = dummyData.find((r) => r._id === resumeid);
-
-  console.log("Matched Resume:", resume);
-
-  if (resume) {
-    document.title = resume.title;
-    const timer = setTimeout(() => {
-      setResumeData(resume);
-    }, 0);
-    return () => clearTimeout(timer);
-  }
-}, [resumeid]);
+    if (resume) {
+      document.title = resume.title;
+      const timer = setTimeout(() => {
+        setResumeData(resume);
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [resumeid]);
 
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [removeBackground, setRemoveBackground] = useState(false);
@@ -103,36 +103,44 @@ useEffect(() => {
               />
 
               {/* Section Tabs */}
-              <div className="flex justify-between items-center mb-6 border-b border-gray-500 py-1"></div>
-              <div></div>
-              <div className="flex items-center justify-between">
-                {activeSectionIndex !== 0 && (
+              <div className="flex justify-between items-center mb-6 border-b border-gray-500 py-1">
+                <div className="flex items-center gap-2 hover:bg-gray-200 transition-all p-2 rounded-lg">
+                  <TemplateSelector
+                    selectedTemplate={resumeData.template}
+                    onChange={(template) =>
+                      setResumeData((prev) => ({ ...prev, template }))
+                    }
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  {activeSectionIndex !== 0 && (
+                    <button
+                      onClick={() => {
+                        setActiveSectionIndex((prevIndex) =>
+                          Math.max(prevIndex - 1, 0)
+                        );
+                      }}
+                      className="flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all"
+                      disabled={activeSectionIndex === 0}
+                    >
+                      <ChevronLeft className="size-4" /> Previous
+                    </button>
+                  )}
+
                   <button
                     onClick={() => {
                       setActiveSectionIndex((prevIndex) =>
-                        Math.max(prevIndex - 1, 0)
+                        Math.min(prevIndex + 1, section.length - 1)
                       );
                     }}
-                    className="flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all"
-                    disabled={activeSectionIndex === 0}
+                    className={`flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all ${
+                      activeSectionIndex === section.length - 1 && "opacity-50"
+                    }`}
+                    disabled={activeSectionIndex === section.length - 1}
                   >
-                    <ChevronLeft className="size-4" /> Previous
+                    Next <ChevronRight className="size-4" />
                   </button>
-                )}
-
-                <button
-                  onClick={() => {
-                    setActiveSectionIndex((prevIndex) =>
-                      Math.min(prevIndex + 1, section.length - 1)
-                    );
-                  }}
-                  className={`flex items-center gap-1 p-1 rounded-lg text-md font-medium text-gray-600 hover:bg-gray-200 transition-all ${
-                    activeSectionIndex === section.length - 1 && "opacity-50"
-                  }`}
-                  disabled={activeSectionIndex === section.length - 1}
-                >
-                  Next <ChevronRight className="size-4" />
-                </button>
+                </div>
               </div>
 
               {/* Form Content */}
@@ -158,9 +166,16 @@ useEffect(() => {
           </div>
           {/* Right-side -Preview */}
           <div className="lg:col-span-7 p-6">
-                {/* <Template1 data={resumeData} /> */}
-                <Template2 data={resumeData} />
-                {/* <Template3 data={resumeData}/>  */}
+            {/* Buttons */}
+            <div className=""></div>
+            {/* Resume-Preview */}
+            <div className="">
+              <Preview
+                data={resumeData}
+                template={resumeData.template}
+                colours={resumeData.accent_color}
+              />
+            </div>
           </div>
         </div>
       </div>
