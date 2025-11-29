@@ -11,6 +11,7 @@ import {
   XIcon,
   Flag,
   UploadCloudIcon,
+  CloudUploadIcon,
 } from "lucide-react";
 import { dummyData } from "../assets/data";
 import { useNavigate } from "react-router-dom";
@@ -74,40 +75,41 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="grid wrap-normal">
       <Navbar />
-      <div className="body  gap-6 flex flex-wrap items-center">
+      <div className="body grid grid-cols-4 m-4 gap-5 place-content-center place-items-center">
         {/* Create Resume */}
 
         <div
           onClick={() => setCreateResume(true)}
-          className="cursor-pointer bg-slate-200 w-60 h-80 border m-3 border-dashed border-gray-300 rounded-2xl hover:border-gray-800 flex flex-col flex-wrap justify-center items-center gap-3"
+          className="cursor-pointer bg-slate-200 grid col-span-2  sm:col-span-1 w-full h-[12rem]  border  border-dashed border-gray-300 rounded-2xl hover:border-gray-800 place-content-center place-items-center gap-3"
         >
-          <Plus className="plusbtn size-15  transition-all duration-300 p-2.5 from-linear-to-br bg-indigo-400 to from-indigo-600  text-white rounded-full" />
-          <p className="text-2xl font-bold">Create Resume</p>
+          <Plus className="plusbtn size-7  transition-all duration-300  from-linear-to-br bg-indigo-300 to from-indigo-400  text-gray-900 rounded-full p-1" />
+          <p className="text-1/4 font-bold">Create Resume</p>
         </div>
 
         {/* Upload Resume */}
 
         <div
           onClick={() => setUploadResume(true)}
-          className="cursor-pointer bg-slate-200 w-60 h-80 border m-3 border-dashed border-gray-300 rounded-2xl hover:border-gray-800 flex flex-col justify-center items-center gap-3"
+          className="cursor-pointer bg-slate-200 grid col-span-2 sm:col-span-1 w-full h-[12rem] border m-3 border-dashed border-gray-300 rounded-2xl hover:border-gray-800  place-content-center place-items-center gap-3"
         >
-          <CloudUpload className="uploadbtn size-15  transition-all duration-300 p-2.5 from-linear-to-br bg-indigo-400 to from-indigo-600  text-white rounded-full" />
-          <p className="text-2xl font-bold">Upload Existing</p>
+          <CloudUploadIcon className="uploadbtn size-7 transition-all duration-300 p-1 from-linear-to-br bg-indigo-300 to from-indigo-400  text-gray-900 rounded-full" />
+
+          <p className="text-1/4 font-bold">Upload Existing</p>
         </div>
       </div>
 
-      <hr className="border-slate-400 my-6 m-4 sm:w-[305px]" />
+      <hr className="border-slate-400 my-2 m-4 sm:w-[305px]" />
 
-      <div className="grid  sm:flex flex-wrap m-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 m-4 gap-6 wrap-normal">
         {allResumes.map((resume, index) => {
           const basecolour = colours[index % colours.length];
           return (
             <button
               onClick={() => navigate(`/layout/resume/${resume._id}`)}
               key={index}
-              className="relative max-w-60 w-60  h-76 flex flex-col flex-wrap items-center justify-center rounded-lg gap-2 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
+              className="relative col-span-1 max-w-full  h-[12rem] place-content-center place-items-center rounded-lg gap-3 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
               style={{
                 background: `linear-gradient(135deg , ${basecolour}10 , ${basecolour}40)`,
                 borderColor: basecolour + "40",
@@ -118,7 +120,7 @@ const Dashboard = () => {
                 style={{ color: basecolour }}
               />
               <p
-                className="text-sm group-hover:scale-105 transition-all px-2 text-center"
+                className="text-1/4 group-hover:scale-105 transition-all px-2 text-center"
                 style={{ color: basecolour }}
               >
                 {resume.title}

@@ -38,7 +38,7 @@ const Hero = () => {
       </svg>
 
       {/* Navbar */}
-      <nav className="z-50 w-full flex items-center justify-between py-3">
+      <nav className="z-50 w-full flex items-center justify-between py-1">
         <a href="/" className="text-xl sm:text-2xl font-bold">
           ResuForge
         </a>
@@ -148,7 +148,7 @@ const Hero = () => {
       )}
 
       {/* Hero Content */}
-      <div className="mt-16 sm:mt-20 flex flex-col items-center text-center w-full max-w-[90%] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px]">
+      <div className="mt-1 mb-10 sm:mt-20 flex flex-col items-center text-center w-full max-w-[90%] sm:max-w-[600px] md:max-w-[800px] lg:max-w-[1000px]">
         <div className="flex items-center gap-1 sm:gap-2 border border-slate-400 rounded-full px-2 sm:px-3 py-1 text-xs sm:text-sm bg-white/50">
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
           <span>Try for free</span>
@@ -164,7 +164,7 @@ const Hero = () => {
 
         <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-2 sm:gap-4 items-center justify-center w-full sm:w-auto">
           <Link to="/layout" className="w-full sm:w-auto">
-            <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 sm:px-6 py-2 sm:py-2.5 w-fit sm:w-auto active:scale-95 transition">
+            <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 sm:px-3 py-2 sm:py-2 w-fit sm:w-3xs active:scale-95 transition">
               Get Started
               <svg
                 width="18"

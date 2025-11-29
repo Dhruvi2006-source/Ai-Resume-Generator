@@ -7,9 +7,9 @@ import Footer from "../Components/Footer";
 
 const Home = () => {
   return (
-    <div>
-      <Banner />
-      <div className="mt-0 lg:mb-50 sm:mb-15 mb-10">
+    <div className="min-h-screen grid grid-raws-13">
+      <Banner className="grid row-span-2" />
+      <div className="mt-0 grid row-span-3">
       <Hero />
       </div>
       <Features />
