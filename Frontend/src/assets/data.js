@@ -51,7 +51,8 @@ export const dummyData = [
         degree: "B.Tech Computer Science",
         institution: "NY University",
         startDate: "2018",
-        endDate: "2022"
+        endDate: "2022",
+        GPA: "9.8/10.0"
       }
     ],
 
@@ -120,7 +121,8 @@ export const dummyData = [
         degree: "BCA",
         institution: "California Institute of Tech",
         startDate: "2017",
-        endDate: "2020"
+        endDate: "2020",
+        GPA: "9.2/10.0"
       }
     ],
 
@@ -190,7 +192,8 @@ export const dummyData = [
         degree: "B.Tech Information Technology",
         institution: "Texas Tech",
         startDate: "2016",
-        endDate: "2020"
+        endDate: "2020",
+        GPA: "9.5/10.0"
       }
     ],
 

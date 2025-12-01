@@ -148,6 +148,9 @@ const Template3 = ({ data }) => {
                 <p className="text-gray-700 text-sm sm:text-base">
                   {edu.institution} • {edu.startDate} - {edu.endDate}
                 </p>
+                <p className="text-gray-600 text-sm sm:text-base mt-1">
+                  GPA: {edu.GPA}
+                </p>
               </div>
             ))}
         </div>

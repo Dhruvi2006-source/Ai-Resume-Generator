@@ -2,9 +2,9 @@ import { Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
 
 const Template1 = ({ data }) => {
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white  overflow-hidden">
+    <div className="w-full bg-white overflow-hidden">
       {/* -------- HEADER -------- */}
-      <div className="flex items-center gap-8 p-8 bg-linear-to-r from-gray-900 to-gray-700 text-white">
+      <div className="flex flex-row flex-wrap items-center gap-8 p-3 bg-linear-to-r from-gray-900 to-gray-700 text-white">
         {/* LEFT: PROFILE IMAGE */}
         <div className="w-32 h-32 rounded-xl overflow-hidden border-2 border-white shadow-lg">
           {data.personal_info.profileImage ? (
@@ -78,6 +78,7 @@ const Template1 = ({ data }) => {
                   <p className="text-gray-600 text-sm">
                     {edu.institution} — {edu.startDate} to {edu.endDate}
                   </p>
+                  <p className="text-gray-600 text-sm">GPA: {edu.GPA}</p>
                 </div>
               ))}
             </div>

@@ -25,7 +25,7 @@ const Preview = ({ data, template, classes = "" }) => {
   };
 
   return (
-    <div className="w-full flex justify-center bg-gray-200 py-4 px-2 sm:px-4">
+    <div className="w-full flex justify-center px-2 sm:px-4">
       <div
         id="resume-privew"
         className={
