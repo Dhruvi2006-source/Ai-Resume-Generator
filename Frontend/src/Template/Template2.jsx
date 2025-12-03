@@ -21,7 +21,7 @@ const Template2 = ({ data }) => {
         bg-size-[26px_26px]"
       ></div>
 
-      {/* MAIN GRID (Mobile 2 Columns) */}
+      {/* MAIN GRID */}
       <div
         className="relative z-10 grid grid-cols-9
  p-4 sm:p-6 lg:p-0"
@@ -92,6 +92,30 @@ const Template2 = ({ data }) => {
               ))}
             </div>
           </div>
+          {/* NEW SECTION – ACHIEVEMENTS */}
+          {data.achievements?.length > 0 && (
+            <div>
+              <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+                <UserRound size={18} /> Achievements
+              </h2>
+
+              <div className="mt-4 space-y-4">
+                {data.achievements.map((ach) => (
+                  <div
+                    key={ach.id}
+                    className="p-4 rounded-xl shadow-sm"
+                  >
+                    <h3 className="font-semibold text-base sm:text-lg">
+                      {ach.title}
+                    </h3>
+                    <p className="text-gray-100 text-xs sm:text-sm mt-1">
+                      {ach.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* RIGHT SIDE */}
@@ -127,9 +151,18 @@ const Template2 = ({ data }) => {
                     <p className="text-gray-600 text-xs sm:text-sm mt-1">
                       {exp.company} • {exp.startDate} - {exp.endDate}
                     </p>
-                    <p className="text-gray-800 mt-2 sm:mt-3 text-xs sm:text-base leading-relaxed">
-                      {exp.details}
-                    </p>
+
+                    {Array.isArray(exp.details) ? (
+                      <ul className="list-disc ml-6 text-gray-700 text-xs sm:text-sm mt-2">
+                        {exp.details.map((d, idx) => (
+                          <li key={idx}>{d}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-gray-800 mt-2 sm:mt-3 text-xs sm:text-base leading-relaxed">
+                        {exp.details}
+                      </p>
+                    )}
                   </div>
                 ))}
             </div>
@@ -158,7 +191,11 @@ const Template2 = ({ data }) => {
                   </p>
                   <p className="text-xs sm:text-sm text-gray-600 mt-1">
                     Tech Used:{" "}
-                    <span className="font-semibold">{project.tech}</span>
+                    <span className="font-semibold">
+                      {Array.isArray(project.tech)
+                        ? project.tech.join(", ")
+                        : project.tech}
+                    </span>
                   </p>
                 </div>
               ))}

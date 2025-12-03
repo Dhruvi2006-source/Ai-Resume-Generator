@@ -98,7 +98,17 @@ const Template1 = ({ data }) => {
                   <p className="text-gray-600 text-sm">
                     {exp.company} — {exp.startDate} to {exp.endDate}
                   </p>
-                  <p className="text-gray-600">{exp.details}</p>
+
+                  {/* Experience Details (ARRAY) */}
+                  {Array.isArray(exp.details) ? (
+                    <ul className="list-disc ml-6 text-gray-600">
+                      {exp.details.map((line, i) => (
+                        <li key={i}>{line}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-600">{exp.details}</p>
+                  )}
                 </div>
               ))}
             </div>
@@ -117,9 +127,48 @@ const Template1 = ({ data }) => {
                   <p className="font-medium text-gray-700">{project.title}</p>
                   <p className="text-gray-600 text-sm">{project.link}</p>
                   <p className="text-gray-600">{project.description}</p>
+
+                  {/* ARRAY OF TECH */}
                   <p className="text-gray-600 text-sm">
-                    Tech Used: {project.tech}
+                    Tech Used:{" "}
+                    {Array.isArray(project.tech)
+                      ? project.tech.join(", ")
+                      : project.tech}
                   </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ⭐ NEW SECTION — SKILLS */}
+        {data.skills?.length > 0 && (
+          <section>
+            <h2 className="text-xl font-semibold mb-2 text-gray-800">Skills</h2>
+            <div className="flex flex-wrap gap-3">
+              {data.skills.map((skill) => (
+                <span
+                  key={skill.id}
+                  className="px-3 py-1 bg-gray-200 text-gray-700 rounded-md text-sm"
+                >
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ⭐ NEW SECTION — ACHIEVEMENTS */}
+        {data.achievements?.length > 0 && (
+          <section>
+            <h2 className="text-xl font-semibold mb-2 text-gray-800">
+              Achievements
+            </h2>
+            <div className="space-y-3">
+              {data.achievements.map((ach) => (
+                <div key={ach.id}>
+                  <p className="font-medium text-gray-700">{ach.title}</p>
+                  <p className="text-gray-600 text-sm">{ach.description}</p>
                 </div>
               ))}
             </div>

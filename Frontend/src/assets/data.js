@@ -1,3 +1,5 @@
+import Achievements from "../Components/Achievements";
+
 export const dummyData = [
   {
     _id: "68d2a31a1c44dd38875bb037e",
@@ -63,6 +65,18 @@ export const dummyData = [
         description: "A personal portfolio website showcasing projects and skills.",
         tech: ["React", "Tailwind"],
         link: "https://github.com/example/project"
+      }
+    ],
+    achievements: [
+      {
+        id: "ach_001",    
+        title: "Dean's List",
+        description: "Awarded for academic excellence in 2020 and 2021."
+      },
+      {
+        id: "ach_002",
+        title: "Hackathon Winner",  
+        description: "Won 2nd place in the XYZ Hackathon for innovative web app development."
       }
     ]
   },
@@ -133,6 +147,19 @@ export const dummyData = [
         description: "UI design for an e-commerce web application.",
         tech: ["React", "CSS Modules"],
         link: "https://github.com/example/ecommerce-ui"
+      }
+    ],
+
+    achievements: [
+      {
+        id: "ach_001",
+        title: "Certified React Developer",
+        description: "Completed the React Developer Certification from XYZ Institute."
+      },
+      {
+        id: "ach_002",
+        title: "Hackathon Winner",  
+        description: "Won 1st place in the ABC Hackathon for best frontend design."
       }
     ]
   },
@@ -205,6 +232,19 @@ export const dummyData = [
         tech: ["Node.js", "Express", "Redis"],
         link: "https://github.com/example/api-monitor"
       }
+    ],
+    achievements: [
+      {
+        id: "ach_001",  
+        title: "Certified React Developer",
+        description: "Completed the React Developer Certification from XYZ Institute."
+      },
+      {
+        id: "ach_002",
+        title: "Hackathon Winner",  
+        description: "Won 1st place in the ABC Hackathon for best frontend design."
+      }
     ]
+        
   }
 ];

@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
 
 const Template4 = ({ data }) => {
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white   overflow-hidden">
+    <div className="w-full max-w-3xl mx-auto bg-white overflow-hidden">
       {/* -------- HEADER -------- */}
       <div className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gray-100">
         {/* PROFILE IMAGE */}
@@ -50,10 +50,12 @@ const Template4 = ({ data }) => {
               <MapPin size={15} />
               <span>{data.personal_info.Address}</span>
             </div>
+
             <div className="flex items-center justify-center md:justify-start gap-2">
               <Linkedin size={15} />
               <span>{data.personal_info.LinkedIn}</span>
             </div>
+
             <div className="flex items-center justify-center md:justify-start gap-2">
               <Globe size={15} />
               <span>{data.personal_info.Website}</span>
@@ -63,7 +65,7 @@ const Template4 = ({ data }) => {
       </div>
 
       {/* -------- BODY -------- */}
-      <div className="p-6 space-y-6">
+      <div className="p-6  space-y-6">
         {/* Summary */}
         {data.summary && (
           <section>
@@ -89,7 +91,7 @@ const Template4 = ({ data }) => {
                   <p className="text-gray-600">
                     {edu.institution} — {edu.startDate} to {edu.endDate}
                   </p>
-                  <p className="text-gray-600">GPA: {edu.GPA}</p> 
+                  <p className="text-gray-600">GPA: {edu.GPA}</p>
                 </div>
               ))}
             </div>
@@ -109,7 +111,13 @@ const Template4 = ({ data }) => {
                   <p className="text-gray-600">
                     {exp.company} — {exp.startDate} to {exp.endDate}
                   </p>
-                  <p className="text-gray-700">{exp.details}</p>
+
+                  {/* details → array */}
+                  <ul className="list-disc list-inside text-gray-700">
+                    {exp.details?.map((d, i) => (
+                      <li key={i}>{d}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -128,7 +136,28 @@ const Template4 = ({ data }) => {
                   <p className="font-medium text-gray-800">{project.title}</p>
                   <p className="text-gray-600 underline">{project.link}</p>
                   <p className="text-gray-700">{project.description}</p>
-                  <p className="text-gray-600">Tech Used: {project.tech}</p>
+
+                  {/* tech → array */}
+                  <p className="text-gray-600">
+                    Tech Used: {project.tech?.join(", ")}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Achievements */}
+        {data.achievements?.length > 0 && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-900 mb-1">
+              Achievements
+            </h2>
+            <div className="space-y-3 text-sm">
+              {data.achievements.map((ach, idx) => (
+                <div key={idx}>
+                  <p className="font-medium text-gray-800">{ach.title}</p>
+                  <p className="text-gray-700">{ach.description}</p>
                 </div>
               ))}
             </div>

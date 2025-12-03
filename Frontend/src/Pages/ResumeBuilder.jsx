@@ -24,6 +24,9 @@ import TemplateSelector from "../Components/TemplateSelector.jsx";
 import PersonalSummary from "../Components/PersonalSummary.jsx";
 import Experience from "../Components/Experience.jsx";
 import Education from "../Components/Education.jsx";
+import Projects from "../Components/Projects.jsx";
+import Skill from "../Components/Skill.jsx";
+import Achievements from "../Components/Achievements.jsx";
 
 const ResumeBuilder = () => {
   const { resumeid } = useParams();
@@ -72,7 +75,7 @@ const ResumeBuilder = () => {
     { id: "education", name: "education", icon: GraduationCap },
     { id: "projects", name: "projects", icon: FolderIcon },
     { id: "skills", name: "skills", icon: Sparkles },
-    { id: "Tools", name: "tools", icon: Wrench },
+    { id: "achievements", name: "achievements", icon: Wrench },
   ];
 
   const activeSection = section[activeSectionIndex];
@@ -222,6 +225,43 @@ const ResumeBuilder = () => {
                       setResumeData((prev) => ({
                         ...prev,
                         education: updatedData,
+                      }))
+                    }
+                    setResumeData={setResumeData}
+                  />
+                )}
+
+                {activeSection.id === "projects" && (
+                  <Projects
+                    data={resumeData.projects}
+                    onChange={(updatedData) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        projects: updatedData,
+                      }))
+                    }
+                    setResumeData={setResumeData}
+                  />
+                )}
+                {activeSection.id === "skills" && (
+                  <Skill
+                    data={resumeData.skills}
+                    onChange={(updatedData) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        skills: updatedData,
+                      }))
+                    }
+                    setResumeData={setResumeData}
+                  />
+                )}
+                {activeSection.id === "achievements" && (
+                  <Achievements
+                    data={resumeData.achievements}
+                    onChange={(updatedData) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        achievements: updatedData,
                       }))
                     }
                     setResumeData={setResumeData}
